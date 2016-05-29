@@ -20,4 +20,4 @@
 2. Use the Ruby documentation and study syntax of Arrays, Hashes, Strings, Integers
 3. Revise through all the sections that I have already passed to make sure everything is fully assimilated
 
-just one more comment
+
