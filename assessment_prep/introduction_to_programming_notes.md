@@ -16,11 +16,12 @@
 * Used in a clause/statement, nil will be treated as false due to *truthy* and *falsey* rules
   * Important to note: `nil == false` returns false
 
-**Operations, Type Conversion **
+**Operations, Type Conversion**
 * Examples of operators: `+ - * / % == && ||`
 * Examples of type conversion methods: `.to_s .to_i .to_f`
 
 **Data Structures/Collections**
+
 1. Array
   * Ordered via index
   * Example: `arr = [1, 2, 3, 4]`
@@ -44,20 +45,25 @@
   * A block is a block of code, following a method invocation - e.g. `array.each { |block| block }`
 
 **Types of Variables**
+
 1. Constant
   * All caps
   * Informtation extracted to contant variables should not be mutated
   * Must be declared outside of methods
   * Accessible in main scope of program
+
 2. Global
   * Declared with prefix of `$`
   * Override all scope boundaries resulting in accessibility througout the approach
   * Not used readily as they can have unexpected consequences
+
 3. Class
   * Declared with prefix of `@@`
   * Accessible by instances of your class including the class itself
   * 
+
 4. Instance
   * 
+
 5. Local
   * 
