@@ -1,16 +1,19 @@
 # General Prep
 
 ## [Ruby Documentation Link] (www.ruby-doc.org "Ruby Documentation") - check out three main areas
+
 1. Class methods (down the side and marked ::)
 2. Instance methods (down the side and marked #)
 3. Class name (at the top, e.g. "String")
 
 ## Intro to Programming Chapters
+
 ### The Basics
+
 **Strings, Symbols & Numbers**
 * Strings need double inverted commas for string interpolation
 
-**nil**
+**The nil Value**
 * Definition of nil: *"a variable with nil is considered to be completely empty and not have any specific type"*
 * Check if something is nil using this method `nil?` It returns a boolean value
 * Used in a clause/statement, nil will be treated as false due to *truthy* and *falsey* rules
@@ -35,6 +38,7 @@
 
 
 ### Variables
+
 **Variable scope**
 * Defined as: *"where in a program a variable is available for use"*
 * A variable's scope is determined by where initialization took place
@@ -60,10 +64,15 @@
 3. Class
   * Declared with prefix of `@@`
   * Accessible by instances of your class including the class itself
-  * 
+  * Used when you need to create a variable that is related to a class and each instance of the class does not need an individual value for that variable
 
 4. Instance
-  * 
+  * Declared using the prefix `@`
+  * Accessible throughout the current instance of the parent class
 
 5. Local
-  * 
+  * Declated simply without prefix
+  * Strictly obey all scope boundaries
+  * Must important variable to use as a beginner as scope rules will be embedded most readily
+
+**Methods**
