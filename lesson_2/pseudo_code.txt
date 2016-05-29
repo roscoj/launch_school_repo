@@ -1,0 +1,19 @@
+1. A method that returns the sum of two integers
+DEFINE method name
+- GET user for a first number and SET as variable num1
+- GET user for second number and SET as variable num2
+- SET result = num1 + num2
+- PRINT result for user
+
+2. A method that takes an array of strings, and returns a string that is all those strings concatenated together
+- DEFINE method name
+- SET the array = to var1
+- iterate through var1 and + each string to the other
+- PRINT this to the screen for verification
+
+3. A method that takes an array of integers, and returns a new array with every other element
+- DEFINE method name
+- ITERATE through each integer in the array
+- IF the index of the integer is 0 or is odd, MAP this to a new array called new_arr1
+- PRINT new_arr1 to the screen
+

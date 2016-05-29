@@ -1,0 +1,15 @@
+puts "a_outer is 42 with an id of: 85 before the block."
+puts "b_outer is forty two with an id of: 13345340 before the block."
+puts "c_outer is [42] with an id of: 13345320 before the block."
+puts "d_outer is 42 with an id of: 85 before the block.\n\n"
+
+1.times do
+    a_outer_inner_id = a_outer.object_id
+    b_outer_inner_id = b_outer.object_id
+    c_outer_inner_id = c_outer.object_id
+    d_outer_inner_id = d_outer.object_id
+
+    puts "a_outer id was 42 before the block and is: #{a_outer_inner_id} inside the block."
+    puts "b_outer id was #{b_outer_id} before the block and is: #{b_outer_inner_id} inside the block."
+    puts "c_outer id was #{c_outer_id} before the block and is: #{c_outer_inner_id} inside the block."
+    puts "d_outer id was #{d_outer_id} before the block and is: #{d_outer_inner_id} inside the block.\n\n"
