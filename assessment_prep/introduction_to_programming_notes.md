@@ -75,4 +75,39 @@
   * Strictly obey all scope boundaries
   * Must important variable to use as a beginner as scope rules will be embedded most readily
 
-**Methods**
+
+### Methods
+
+**General Notes**
+
+* Chunks of code that perform certain tasks
+* "what we've done is extracted the logic of printing out text, so that our program can have more flexibility."
+* We define parameters into a method when the method requires access to data outside of its scope
+* Parameters act as placeholders for the arguments which are "passed" in - these arguments are modified via the code in the method
+* The arguments are assigned to the variable (placeholder)
+
+**Default Parameters**
+
+* These are used if we want a parameters to default to something when nothing is passed in
+  * We do this: `def method(words='hello')` words is the parameter and 'hello' is the default value
+
+**Mutating the Caller**
+
+* The caller is defined as follows: whatever the method acts on
+* Some methods mutate the caller, i.e. make a permanent change the argument that is passed in
+* Other methods do not make permanent changes
+* If we write method that does mutate the caller, we should include a `!` after the method name to remind us
+
+**Return**
+
+* Methods implicitely return whatever the last line of the method returns. Hence, we don't always have to explicitely write `return`
+  * We should be careful to check what is returned however, as it is sometimes not what we expect - use irb for this
+
+**Chaining Methods**
+
+* Methods can be chained like this `"hi there".length.to_s` - this returns `"8"`
+  * A caveat to the above is that nothing must return nil in the chain otherwise it will break down and thorow an error
+
+**Methods as Arguments**
+
+* We can use methods as arguments - whatever value the method returns, is then passed into the method as the argument
