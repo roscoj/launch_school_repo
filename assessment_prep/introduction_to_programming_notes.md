@@ -93,10 +93,11 @@
 
 **Mutating the Caller**
 
-* The caller is defined as follows: whatever the method acts on
-* Some methods mutate the caller, i.e. make a permanent change the argument that is passed in
+* The caller is defined as follows: *whatever the method acts on*
+* Some methods mutate the caller, i.e. make a permanent change the argument that is passed - this means it enables a change in the *outer* scope
 * Other methods do not make permanent changes
 * If we write method that does mutate the caller, we should include a `!` after the method name to remind us
+* In general, fluency in this comes from memorizing
 
 **Return**
 
