@@ -115,3 +115,15 @@
 
 
 ### Flow Control
+
+**Conditional flow:** data, doing the right thing when it's supposed to
+
+**Conditionals**
+
+* Generally speaking these are forks which are created using logic, e.g. `if elsif else < > ==`
+* Interesting one line if statement syntax `if 'a condition' then 'an outcome' end`
+* Also reserved words unless until
+* Ternery operator `true ? 'executes this if true' : 'executes this if false'`
+
+**Case Statement**
+
