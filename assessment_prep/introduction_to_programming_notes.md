@@ -258,4 +258,9 @@ a << 6
 
 # Returns the new array
 ```
-
+* `.map` method
+  * This method works as follows:
+    1. Interates over the array
+    2. Applies a block to each element in the array
+    3. Returns a new array
+  * Syntax is the same as `.each` method
