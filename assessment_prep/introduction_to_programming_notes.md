@@ -139,14 +139,16 @@
 
 **Loop**
 
+* Typically we will add logic, control flow, conditionals to loops to make them more effective
 * `loop` is the most basic of loops, its syntax is as follows:
 
 ```ruby
 loop do
-  some code
+  'some code'
   break
 end
 ```
+* Returns `nil`
 
 * When we create a loop, we must always think of how to break out of the loop
   * For this we can use `break` or `next`
@@ -154,7 +156,7 @@ end
 
 **While and Until Loops**
 
-* A while and until loops are given a parameter
+* While and until loops are given a parameter
 * While loops: if the condition returns false, the while loop is broken out of
 * Until loops: same as above but simple rephrasing of the problem
 * Syntax as follows (sub out while for until where applicable):
@@ -164,6 +166,7 @@ while 'some condition'
   'some code'
 end
 ```
+* Returns `nil`
 
 **Do/while Loop**
 
@@ -183,7 +186,76 @@ loop do
   end
 end
 ```
+* Returns `nil`
 
 **For Loop**
 
-* 
+* Used to loop over collections, e.g. an array `a = []` or a range `1..10`
+* Iteration methods such as `.each` are prefered over for loops
+* Syntax as follows:
+```ruby
+x = [1, 2, 3, 4, 5]
+
+for i in x do
+  puts i
+end
+```
+* Returns the original collection
+ 
+**Iterators**
+
+* `.each .map .select` are examples of iterators
+* In general they loop over a collection and perform actions on each element
+* Syntax as follows:
+```ruby
+a = [1,2,3,4,5]
+
+# One liner
+a.each { |num| p num }
+
+# Multi liner
+a.each do |num|
+  p num
+end
+```
+
+* They return values depending on which one is used
+
+
+### Arrays
+
+**General**
+
+* General definition is: an array is an ordered list of elements whose index begins at 0 and increments by 1
+* Creating an array: `arr = [1,2,3,4,5]`
+* Two typical array methods: `.first` and `.last`
+  * `arr.first` returns the first element
+  * `arr.last` returns the last element
+  * `arr[3]` returns the element at the third index
+
+**Modifiying Arrays**
+
+* `.pop` method
+  * This method destructively deletes the last element in the array
+  * Return: the popped element
+```ruby
+a = [1,2,3,4,5]
+a.pop
+
+# Returns the popped element
+```
+* `.push` method or `<<` operator
+  * This method destructively adds an element to the end of the array
+  * Return: the modified array, syntax as follows:
+```ruby
+a = [1,2,3,4,5]
+
+# Push method
+a.push 6
+
+# Shovel operator
+a << 6
+
+# Returns the new array
+```
+
