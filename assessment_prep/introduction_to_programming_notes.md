@@ -127,3 +127,63 @@
 
 **Case Statement**
 
+* These are generally in place of `if elsif else` statements
+* However they are more flexible and succinct if used correctly
+* For instance, you can do as follows
+  * Save the result of a case to a variable
+  * Provide an argument to the case or not provide one
+* Best way of learning them is to use them in practice and experiement in different situations
+
+
+### Loops and Iterators
+
+**Loop**
+
+* `loop` is the most basic of loops, its syntax is as follows:
+
+```ruby
+loop do
+  some code
+  break
+end
+```
+
+* When we create a loop, we must always think of how to break out of the loop
+  * For this we can use `break` or `next`
+  * We can also assign conditionals to the break clause in one line with `break if` of `break until`
+
+**While and Until Loops**
+
+* A while and until loops are given a parameter
+* While loops: if the condition returns false, the while loop is broken out of
+* Until loops: same as above but simple rephrasing of the problem
+* Syntax as follows (sub out while for until where applicable):
+
+```ruby
+while 'some condition'
+  'some code'
+end
+```
+
+**Do/while Loop**
+
+* This means that the code is run at least once due to the conditional being placed at the end
+* Example use: asking the user if they wish to play again
+  * Wrap a whole game in a do/while loop and ask at the end of they wish to play
+  * If conditional is met, `break` out of game loop, if not, continue in the loop
+* Syntax as follows:
+
+```ruby
+loop do
+  'some code'
+  'some more code'
+  'and some more code'    # e.g. gets.chomp
+  if 'some condition'     # e.g. that gets.chomp == 'something'
+    break
+  end
+end
+```
+
+**For Loop**
+
+* 
