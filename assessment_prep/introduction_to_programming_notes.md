@@ -357,3 +357,49 @@ array = [1, 2, 3, ['a', 'b'], 6]  # index 3 is the nested element ['a', 'b']
 
 p array[3][0] # This would print out 'a'
 ```
+
+
+### Hashes
+
+**General**
+
+* Hashes are stored values with an associated key (the key is usually a symbol)
+* The associated key is what sets hashes apart from arrays
+
+**Retreving Keys/Values From Hashes**
+
+* Given the following hash: `hash = {a:1, b:2, c:3, d:4}`
+* To retrieve a value by using a key: `hash[:a]`
+* To add to a hash: `hash[:e] = 5`
+
+
+**Interating Over Hashes**
+
+* Example methods include `.each` or `.select`
+  * They be used but we need to include an extra placeholder to account for the keys and values e.g. `hash.each { |key, vakue| code }`
+
+**Hashes vs Arrays**
+
+* When deciding on which data structure to use:
+  * Does this data need to be associated with a specific label? If yes, use a hash. If the data doesn't have a natural label, then typically an array will work fine.
+  * Do I need a "stack" or a "queue" structure? Arrays are good at mimicking simple "first-in-first-out" queues, or "last-in-first-out" stacks.
+
+
+**Common Hash Methods**
+
+* `.has_key?`
+  * Takes an argument and checks if they given hash contains a key matching the arguement
+  * Return: boolean
+
+* `.select`
+  * See Array section for funtionality
+
+* `.fetch`
+  * Takes an argument and returns the value of a key if a key matches the argument
+  * A default value can be used if no match is found
+
+* `.keys` and `.values`
+  * Return: keys/values in the given hash - note, the return format is an ARRAY
+
+
+ 
