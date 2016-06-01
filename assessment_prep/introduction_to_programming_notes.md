@@ -204,8 +204,9 @@ end
  
 **Iterators**
 
-* `.each .map .select` are examples of iterators
-* In general they loop over a collection and perform actions on each element
+* `.each`
+* Iterates over a collection and performs actions on each element depending on what is present in the block
+* Return: **original** array
 * Syntax as follows:
 ```ruby
 a = [1,2,3,4,5]
@@ -233,10 +234,11 @@ end
   * `arr.last` returns the last element
   * `arr[3]` returns the element at the third index
 
-**Modifiying Arrays**
+**Modifiying Arrays and Common Array Methods**
 
 * `.pop` method
-  * This method destructively deletes the last element in the array
+  * This method deletes the last element in the array
+  * Destructive method
   * Return: the popped element
 ```ruby
 a = [1,2,3,4,5]
@@ -245,7 +247,8 @@ a.pop
 # Returns the popped element
 ```
 * `.push` method or `<<` operator
-  * This method destructively adds an element to the end of the array
+  * This method adds an element to the end of the array
+  * Destructive method
   * Return: the modified array, syntax as follows:
 ```ruby
 a = [1,2,3,4,5]
@@ -258,9 +261,99 @@ a << 6
 
 # Returns the new array
 ```
-* `.map` method
+* `.unshift`
+  * Works exactly like `.push` but adds element to the start of the array instead of the end
+  * Destructive
+  * Return: modified array
+
+* `.map` (`.collect` is an alias) method
   * This method works as follows:
     1. Interates over the array
     2. Applies a block to each element in the array
-    3. Returns a new array
-  * Syntax is the same as `.each` method
+  * Syntax: same as `.each` method
+  * Return: **a new array**
+  * Non-destructive method (unless `!` bang operator is used)
+
+* `.delete_at`
+  * Used to delete an element at a given index
+  * Return: the deleted element
+  * Destructive method
+  * Syntax:
+```ruby
+a = [1,2,3,4,5]
+a.delete_at(1)
+
+# Deleted item is returned (think of it like .pop method)
+```
+
+* `.delete`
+  * Works slightly differently as it uses the instance of the element as opposed to indexes
+  * It deletes an instance of the element it has passed in as an argument
+  * Return: the deleted element
+  * Destructive method
+  * Syntax: same as delete_at, argument references the element not the index though
+
+* `.uniq`
+  * Removes duplicates in an array
+  * Non-destructive unless the bang `!` operator is used
+  * Syntax: `a.uniq`
+  * Returns: the new array
+
+* `.select`
+  * Works as follows:
+    1. Interates over an array
+    2. Returns a new array, continaing only elemtns that return `True` for the conditional
+    3. Needs a block to work effectively
+  * Non-destructive
+  * Syntax: same as `.map` and `.each` etc
+  * Return: the new array
+
+* `.include?`
+  * Checks to see of the argument given is present in the array
+  * Return: boolean
+  * Syntax: `array.include?(3)`
+
+* `.flatten`
+  * Creates a one dimentional array, thereby removing any nesting
+  * Non-destructive (unless `!` is used)
+  * Return: a new array
+  * If several nests are present this can take an integer as an argument which specifies how many nested levels are flattened
+  * Syntax: `array.flatten(1)`
+
+* `.each_index`
+  * Syntax: same as `.each`
+  * Return: Original array
+  * Iterates through the array but the placeholder is the index instead of the element
+
+* `.each_with_index`
+  * Return: original array
+  * Syntax:
+```ruby
+a.each_with_index do |val, idx|
+  puts "#{idx+1}. #{val}"
+end
+# In the above, the first placeholder is the element and the second is the index
+```
+
+* `.sort`
+  * Sorts an array
+  * Returns the new array
+  * Non-destructive unless `!` is used
+
+* `.product`
+  * Combines two arrays
+  * Syntax: `array1.product(array2)
+  * Each element in array1 is nested with each element of array2
+  * Return: a new array
+
+
+**Nested Arrays**
+
+* Code example below:
+```ruby
+array = [1, 2, 3, ['a', 'b'], 6]  # index 3 is the nested element ['a', 'b']
+
+# To access an individual element within the nested element we need to reference each nest index:
+
+p array[3][0] # This would print out 'a'
+```
