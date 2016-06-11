@@ -10,7 +10,7 @@
 
 ###Calculating primes###
 
-*Part 1*
+**Part 1**
 
 * Program will work as follows:
   * We will create a method which takes an integer as a parameter
@@ -21,14 +21,14 @@
   * Divide number given by each number in the range via the % operator
   * Condition a false return if the % == 0 (else return true)
 
-*Part 2*
+**Part 2**
 
 * Program will work as follows:
   * Write a method that will take an array of integers and return only those that are prime
   * Use `select` method to iterate through the array
   * Use `prime?` method from part 1 inside the select
 
-*Part 3*
+**Part 3**
 
 * Write a method that takes an array and counts the number of primes
   * Replace `select` with `count`, leaving the block containing `prime?` method
