@@ -19,3 +19,8 @@
 1. Read through and take notes on "Introduction to Programming With Ruby"
 2. Use the Ruby documentation and study syntax of Arrays, Hashes, Strings, Integers
 3. Revise through all the sections that I have already passed to make sure everything is fully assimilated
+
+##Final Run to the Assessment##
+* Watch all the vides from series "Watching Others Code"
+* Take notes and make sure everything contained in the videos is achievable with ease
+
