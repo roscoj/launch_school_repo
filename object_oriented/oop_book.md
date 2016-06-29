@@ -13,3 +13,9 @@ is a form of data protection in this sense
 * Polymorphism: 'poly' (many) and 'morph' (form). The ability of data to be represented as many different types
 * Inheritance: An idea that a class can inherit behaviours of another class; a *superclass*
 * Modules: these are mixed in with classes using the reserve word `include` which is known as a *mixin*
+
+
+**What are objects?**
+
+Everything is an object! Objects are created from classes. For example `"Hello"` is an object created from the *string* class. Think
+of classes as molds which create the objects.
