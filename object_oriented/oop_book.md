@@ -12,10 +12,22 @@ where a ripple effect can crash the whole program.
 is a form of data protection in this sense
 * Polymorphism: 'poly' (many) and 'morph' (form). The ability of data to be represented as many different types
 * Inheritance: An idea that a class can inherit behaviours of another class; a *superclass*
-* Modules: these are mixed in with classes using the reserve word `include` which is known as a *mixin*
 
 
-**What are objects?**
+
+**What are objects? / Classes define objects**
 
 Everything is an object! Objects are created from classes. For example `"Hello"` is an object created from the *string* class. Think
-of classes as molds which create the objects.
+of classes as molds which create the objects. Classes are included in a program using the reserve word `class` and named using CamelCase.
+
+The workflow of creating objects out of classes is called *instantiation*:
+  "We have instantiated the object from the class"
+  
+  
+**Modules**
+
+These are mixed in with classes using the reserve word `include` which is known as a *mixin*. However they are first added to our overall
+program before this is possible.
+
+
+
