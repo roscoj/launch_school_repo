@@ -30,4 +30,42 @@ These are mixed in with classes using the reserve word `include` which is known 
 program before this is possible.
 
 
+**Introduction Exercises**
+
+1. How do we create an object in Ruby? Give an example of the creation of an object. 
+```ruby
+class SpeakSlowly
+end
+
+an_object = SpeakSlowly.new
+
+```
+
+2. What is a module? What is its purpose? How do we use them with our classes? Create a module for the class you created in exercise 1 and include it properly.
+
+```ruby
+module my_module
+end
+
+class MyClass
+  include my_module
+end
+
+new_object = MyClass.new
+```
+
+##Classes and Objects - Part I##
+
+**General notes:**
+
+* `attr_accessor`, `attr_reader` and `attr_writer` are *methods*
+* This is key to understanding how they work; when we change parameters using them we remove the `@` and instead of calling the variable directly, we call the methods
+* They are known as "getter and setter methods"
+* Syntax as follows:
+```ruby
+class = SomeClass
+attr_accessor :some_param
+
+end
+```
 
