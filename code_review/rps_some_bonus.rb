@@ -175,7 +175,7 @@ module Display
 end
 
 class RPSGame
-  WINNING_SCORE = 10
+  WINNING_SCORE = 6
   include Display
   attr_reader :human, :computer
 
