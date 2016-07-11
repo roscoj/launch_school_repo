@@ -104,7 +104,7 @@ class Human < Player
   end
 
   def set_name
-    puts "What's your first name."
+    puts "What's your first name?"
     n = ''
     loop do
       n = gets.chomp
