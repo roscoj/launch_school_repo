@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require 'pry'
 
 class Move
   attr_reader :value
@@ -28,19 +27,88 @@ class Player
   attr_accessor :move, :name, :score, :history
 
   def initialize
-    set_name
     @score = 0
     @history = []
   end
 end
 
-class Human < Player
+class Computer < Player
+  attr_reader :weighted_array, :bot
+  def initialize
+    super
+    set_name
+    @bot = Computer.const_get(name).new
+    @weighted_array = bot.create_weighted_array
+  end
+
   def set_name
-    puts "What's your name."
+    choice = nil
+    loop do
+      puts "Please choose an opponent (Hal, R2D2 or Chappie)"
+      choice = gets.chomp
+      self.name = choice
+      break if ['R2D2', 'Hal', 'Chappie'].include?(choice)
+      puts "Invalid name"
+    end
+    self.name = choice
+  end
+
+  def choose
+    self.move = Move.new(weighted_array.sample)
+  end
+end
+
+module BotMethods
+  def create_weighted_array
+    array = []
+    index = 0
+    loop do
+      (weights[index] * 100).to_i.times do
+        array << Move::VALUES[index]
+      end
+      index += 1
+      break if index == Move::VALUES.size
+    end
+    array
+  end
+end
+
+class Hal < Computer
+  include BotMethods
+  attr_reader :weights
+  def initialize
+    @weights = [1.0, 0.0, 0.0, 0.0, 0.0]
+  end
+end
+
+class Chappie < Computer
+  include BotMethods
+  attr_reader :weights
+  def initialize
+    @weights = [0.1, 0.1, 0.5, 0.1, 0.2]
+  end
+end
+
+class R2D2 < Computer
+  include BotMethods
+  attr_reader :weights
+  def initialize
+    @weights = [0.1, 0.1, 0.5, 0.1, 0.2]
+  end
+end
+
+class Human < Player
+  def initialize
+    super
+    set_name
+  end
+
+  def set_name
+    puts "What's your first name."
     n = ''
     loop do
       n = gets.chomp
-      break unless n.empty?
+      break unless n.empty? || n.chars.include?(' ')
       puts "Sorry, can't be empty!"
     end
     self.name = n
@@ -61,38 +129,6 @@ class Human < Player
     puts history.to_s
   end
 end
-
-class Computer < Player
-  def set_name
-    self.name = ['R2D2', 'Hal'].sample
-  end
-
-  def choose
-    self.move = Move.new(Move::VALUES.sample)
-  end
-
-  # def weighted_choice
-  #   new_array = []
-  #   index = 0
-  #   loop do
-  #     (weights[index] * 100).to_i.times do
-  #       new_array << arr[index]
-  #     end
-  #     index += 1
-  #   break if index == arr.size
-  #   end
-  # end
-end
-
-# class R2D2 < Computer
-#   def initialize
-#     @weights = [0.2, 0.2, 0.2, 0.2, 0.2]
-#   end
-
-#   def set_name
-#     self.name = self.class
-#   end
-# end
 
 module Display
   def display_welcome_message
