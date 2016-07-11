@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'pry'
+
 class Move
   attr_reader :value
   VALUES = ['rock', 'paper', 'scissors', 'lizard', 'spock'].freeze
@@ -47,7 +49,7 @@ class Computer < Player
       puts "Please choose an opponent (Hal, R2D2 or Chappie)"
       choice = gets.chomp
       self.name = choice
-      break if ['R2D2', 'Hal', 'Chappie'].include?(choice)
+      break if ['R2D2', 'Hal', 'Chappie', 'Intelibot'].include?(choice)
       puts "Invalid name"
     end
     self.name = choice
@@ -209,6 +211,7 @@ module Display
     system 'clear'
   end
 end
+
 
 class RPSGame
   WINNING_SCORE = 6
