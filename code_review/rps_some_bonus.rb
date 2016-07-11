@@ -93,7 +93,7 @@ class R2D2 < Computer
   include BotMethods
   attr_reader :weights
   def initialize
-    @weights = [0.1, 0.1, 0.5, 0.1, 0.2]
+    @weights = [0.1, 0.1, 0.1, 0.2, 0.5]
   end
 end
 
