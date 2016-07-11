@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry'
-
 class Move
   attr_reader :value
   VALUES = ['rock', 'paper', 'scissors', 'lizard', 'spock'].freeze
