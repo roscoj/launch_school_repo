@@ -126,7 +126,7 @@ class Human < Player
   end
 
   def show_history
-    puts history.to_s
+    puts history
   end
 end
 
@@ -209,7 +209,6 @@ module Display
     system 'clear'
   end
 end
-
 
 class RPSGame
   WINNING_SCORE = 6
