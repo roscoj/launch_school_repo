@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-module LayoutFormatting
+require 'pry'
+
+module Display
   def line_break
     puts "--------------------------------------------------"
   end
@@ -43,9 +45,7 @@ module LayoutFormatting
     end
     word_array.join
   end
-end
 
-module Display
   def display_welcome_message
     clear
     padding
@@ -133,7 +133,6 @@ end
 
 class TTTGame
   include Display
-  include LayoutFormatting
   include ComputerLogic
 
   WINNING_SCORE = 5
@@ -239,7 +238,7 @@ class TTTGame
   end
 
   def modify_score
-    return nil if round_winner.nil?
+    return unless round_winner
     round_winner.score += 1
   end
 
@@ -250,11 +249,15 @@ class TTTGame
   def current_player_moves
     if @current_player == human
       human_moves
-      @current_player = computer
+      assign_current_player(computer)
     else
       computer_moves
-      @current_player = human
+      assign_current_player(human)
     end
+  end
+
+  def assign_current_player(player_type)
+    @current_player = player_type
   end
 
   def round_winner
@@ -305,7 +308,7 @@ class TTTGame
 end
 
 class Human
-  include LayoutFormatting
+  include Display
   attr_accessor :score
   attr_reader :marker, :name
 
@@ -416,18 +419,20 @@ class Board
   # rubocop:enable Metrics/AbcSize
 
   def square_5_empty?
-    @squares.values_at(5).collect(&:marker).first == Square::INITIAL_MARKER
+    @squares[5].marker == Square::INITIAL_MARKER
   end
 
   def find_square_at_risk(marker_type)
     WINNING_LINES.each do |line|
       sqs = @squares.values_at(*line)
       markers = sqs.select { |num| num.marker == marker_type }.collect(&:marker)
-      next unless markers.size == 2
-      empty_square = sqs.select do |element|
-        element.marker == Square::INITIAL_MARKER
+
+      if markers.size == 2
+        empty_square = sqs.select do |element|
+          element.marker == Square::INITIAL_MARKER
+        end
+        return @squares.key(empty_square[0])
       end
-      return @squares.key(empty_square[0])
     end
     nil
   end
