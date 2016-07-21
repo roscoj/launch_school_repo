@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry'
-
 module Display
   def line_break
     puts "--------------------------------------------------"
