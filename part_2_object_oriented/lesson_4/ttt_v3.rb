@@ -422,16 +422,28 @@ class Board
     @squares[5].marker == Square::INITIAL_MARKER
   end
 
+  def group_marked_squares(squares, marker_type)
+    squares.select { |sq| sq.marker == marker_type }.collect(&:marker)
+  end
+
+  def group_empty_squares(squares)
+    group = squares.select do |sq|
+      sq.marker == Square::INITIAL_MARKER
+    end
+    group.collect(&:marker)
+  end
+
+  def isolate_risk_square(squares)
+    squares.select { |sq| sq.marker == Square::INITIAL_MARKER }
+  end
+
   def find_square_at_risk(marker_type)
     WINNING_LINES.each do |line|
-      sqs = @squares.values_at(*line)
-      markers = sqs.select { |num| num.marker == marker_type }.collect(&:marker)
-
-      if markers.size == 2
-        empty_square = sqs.select do |element|
-          element.marker == Square::INITIAL_MARKER
-        end
-        return @squares.key(empty_square[0])
+      sqs = @squares.values_at(*line) # => array of square objects
+      marked_sqs = group_marked_squares(sqs, marker_type)
+      empty_sqs = group_empty_squares(sqs)
+      if marked_sqs.size == 2 && empty_sqs.size == 1
+        return @squares.key(isolate_risk_square(sqs)[0])
       end
     end
     nil
