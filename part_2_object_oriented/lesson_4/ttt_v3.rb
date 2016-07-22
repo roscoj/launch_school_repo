@@ -432,7 +432,7 @@ class Board
   end
 
   def isolate_risk_square(squares)
-    squares.select { |sq| sq.marker == Square::INITIAL_MARKER }
+    squares.detect { |sq| sq.marker == Square::INITIAL_MARKER }
   end
 
   def find_square_at_risk(marker_type)
@@ -441,7 +441,7 @@ class Board
       marked_sqs = group_marked_squares(sqs, marker_type)
       empty_sqs = group_empty_squares(sqs)
       if marked_sqs.size == 2 && empty_sqs.size == 1
-        return @squares.key(isolate_risk_square(sqs)[0])
+        return @squares.key(isolate_risk_square(sqs))
       end
     end
     nil
