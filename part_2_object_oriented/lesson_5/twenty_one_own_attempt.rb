@@ -1,3 +1,5 @@
+# use some sort of unless on the find_winner method
+
 # frozen_string_literal: true
 
 module Formatting
@@ -53,22 +55,18 @@ module Display
     press_enter_to_continue
   end
 
-  def display_total(player_type)
-    puts "#{player_type.name}'s total is #{player_type.total}"
-  end
-
   def display_player_cards
     puts "#{player.name}'s cards:"
     puts " | #{player.cards_in_hand.join(' | ')} |"
     padding
-    display_total(player)
+    puts "#{player.name}'s total is #{player.total}"
   end
 
   def display_dealer_cards_full
     puts "#{dealer.name} cards:"
     puts " | #{dealer.cards_in_hand.join(' | ')} |"
     padding
-    display_total(dealer)
+    puts "#{dealer.name}'s total is #{dealer.total}"
   end
 
   def display_dealer_cards_hidden
@@ -143,21 +141,21 @@ module Hand
   include Display
 
   def total
-    total = 0
+    sum = 0
     cards_in_hand.each do |card|
-      total += 11 if card.value == 'ace'
-      total += 10 if card.value.to_i == 0
-      total += card.value.to_i
+      sum += 11 if ['Ace'].include?(card.value)
+      sum += 10 if ['King', 'Queen', 'Jack'].include?(card.value)
+      sum += card.value.to_i
     end
-
-    if hand_includes_ace? && total > WINNING_SCORE
-      total -= 10
-    end
-    self.hand_total = total
+    ace_total_adjuster(sum)
   end
 
-  def hand_includes_ace?
-    cards_in_hand.include?('Ace')
+  def ace_total_adjuster(current_total)
+    sum = current_total
+    cards_in_hand.each do |card|
+      sum -= 10 if ['Ace'].include?(card.value) && sum > WINNING_SCORE
+    end
+    self.hand_total = sum
   end
 
   def cards_back_in_deck
@@ -248,7 +246,7 @@ class Game
       if busted?(dealer.total)
         display_bust_message
         break
-      elsif dealer.total >= player.total
+      elsif dealer.total >= Dealer::RISK_THRESHOLD
         dealer.display_stay_message
         break
       else
@@ -263,15 +261,11 @@ class Game
   end
 
   def find_winner
-    find_winner_if_bust
+    return dealer if busted?(player.total)
+    return player if busted?(dealer.total)
     return player if player.total > dealer.total
     return dealer if dealer.total > player.total
     nil
-  end
-
-  def find_winner_if_bust
-    return dealer if busted?(player.total)
-    return player if busted?(dealer.total)
   end
 
   def play_again?
@@ -323,7 +317,7 @@ end
 
 class Dealer
   include Hand
-  RISK_THRESHOLD = (WINNING_SCORE - 10)
+  RISK_THRESHOLD = 17
 
   attr_accessor :cards_in_hand, :hand_total
   attr_reader :name
@@ -337,8 +331,8 @@ end
 
 class Deck
   attr_accessor :active_cards, :card_indexes
-  SUITS = %w(diamond heart spade club).freeze
-  VALUES = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"].freeze
+  SUITS = ['Diamond', 'Heart', 'Spade', 'Club'].freeze
+  VALUES = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace'].freeze
   NUMBER_OF_CARDS = 52
 
   def initialize
