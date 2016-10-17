@@ -1,4 +1,3 @@
-require 'pry'
 class SecretHandshake
   def initialize(num)
     @num = num
@@ -36,6 +35,3 @@ class SecretHandshake
     results
   end
 end
-
-# test = SecretHandshake.new(2)
-# p test.commands
