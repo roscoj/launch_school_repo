@@ -12,10 +12,6 @@ class Clock
     Clock.new(total_mins)
   end
 
-  def format_for_read_out(num)
-    num < 10 ? '0' + num.to_s : num.to_s
-  end
-
   def to_s
     hour_read_out = format_for_read_out(@hours)
     minute_read_out = format_for_read_out(@minutes)
@@ -40,5 +36,11 @@ class Clock
 
   def ==(other)
     to_s == other.to_s
+  end
+
+  private
+
+  def format_for_read_out(num)
+    num < 10 ? '0' + num.to_s : num.to_s
   end
 end
